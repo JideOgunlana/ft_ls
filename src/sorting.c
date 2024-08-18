@@ -1,5 +1,5 @@
 
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 void swap_files(t_file *a, t_file *b) {
     char *temp_name = a->name;

@@ -1,5 +1,5 @@
 
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 t_file *create_file_node(const char *name, struct stat *stats) {
     t_file *new_file = (t_file *)malloc(sizeof(t_file));

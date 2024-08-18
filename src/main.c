@@ -1,5 +1,5 @@
 
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 int main(int argc, char **argv) {
     t_options options = {0, 0, 0, 0, 0};

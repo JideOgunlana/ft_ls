@@ -1,5 +1,5 @@
 
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 void recursive_traversal(const char *path, t_options options) {
     t_file *files = list_directory(path, options);

@@ -1,5 +1,5 @@
 
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 void print_permissions(struct stat stats) {
     printf( (S_ISDIR(stats.st_mode)) ? "d" : "-");

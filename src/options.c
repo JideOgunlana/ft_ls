@@ -1,5 +1,5 @@
 
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 void parse_options(int argc, char **argv, t_options *options) {
     int opt;
