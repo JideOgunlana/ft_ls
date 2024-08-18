@@ -5,18 +5,30 @@ void recursive_traversal(const char *path, t_options options) {
     t_file *files = list_directory(path, options);
     sort_files(&files, options);
 
-    while (files) {
-        print_file_info(files, options);
-        if (options.R && S_ISDIR(files->stats.st_mode) && 
-            strcmp(files->name, ".") != 0 && strcmp(files->name, "..") != 0) {
+    t_file *current = files;
+
+    while (current) {
+        print_file_info(current, options);
+        current = current->next;
+    }
+
+    // Reset pointer to head for recursion
+    current = files;
+
+    while (current) {
+        if (options.R && S_ISDIR(current->stats.st_mode) &&
+            strcmp(current->name, ".") != 0 && strcmp(current->name, "..") != 0) {
 
             char new_path[1024];
-            snprintf(new_path, sizeof(new_path), "%s/%s", path, files->name);
+            snprintf(new_path, sizeof(new_path), "%s/%s", path, current->name);
             printf("\n%s:\n", new_path);
+
+            // Recursive call to list subdirectory
             recursive_traversal(new_path, options);
         }
-        files = files->next;
+        current = current->next;
     }
 
     free_file_list(files);
 }
+

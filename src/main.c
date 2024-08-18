@@ -7,23 +7,33 @@ int main(int argc, char **argv) {
 
     if (optind >= argc) {
         // No directory specified, list current directory
-        t_file *files = list_directory(".", options);
-        sort_files(&files, options);
-        while (files) {
-            print_file_info(files, options);
-            files = files->next;
-        }
-        free_file_list(files);
-    } else {
-        // List directories specified in arguments
-        for (int i = optind; i < argc; i++) {
-            t_file *files = list_directory(argv[i], options);
+        if (options.R) {
+            recursive_traversal(".", options);
+        } else {
+            t_file *files = list_directory(".", options);
             sort_files(&files, options);
             while (files) {
                 print_file_info(files, options);
                 files = files->next;
             }
+            if (!options.l) printf("\n");  // Print new line if -l is not used
             free_file_list(files);
+        }
+    } else {
+        // List directories specified in arguments
+        for (int i = optind; i < argc; i++) {
+            if (options.R) {
+                recursive_traversal(argv[i], options);
+            } else {
+                t_file *files = list_directory(argv[i], options);
+                sort_files(&files, options);
+                while (files) {
+                    print_file_info(files, options);
+                    files = files->next;
+                }
+                if (!options.l) printf("\n");  // Print new line if -l is not used
+                free_file_list(files);
+            }
         }
     }
 

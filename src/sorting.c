@@ -23,11 +23,14 @@ void sort_files(t_file **file_list, t_options options) {
             int cmp = 0;
 
             if (options.t) {
+                // Sort by time if -t is specified
                 cmp = j->stats.st_mtime - i->stats.st_mtime;
             } else {
+                // Default: Sort alphabetically
                 cmp = strcmp(i->name, j->name);
             }
 
+            // Reverse the sorting if -r is specified
             if (options.r)
                 cmp = -cmp;
 

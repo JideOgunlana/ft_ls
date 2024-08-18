@@ -30,6 +30,6 @@ void print_file_info(t_file *file, t_options options) {
 
         printf(" %s\n", file->name);
     } else {
-        printf("%s\n", file->name);
+        printf("%s  ", file->name); // Use two spaces for separation
     }
 }
