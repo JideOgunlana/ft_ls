@@ -13,6 +13,7 @@
 #include <time.h>
 #include <string.h>
 #include <errno.h>
+#include <ctype.h>
 
 typedef struct s_file {
     char *name;
