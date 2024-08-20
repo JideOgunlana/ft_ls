@@ -8,7 +8,7 @@ void recursive_traversal(const char *path, t_options options) {
     t_file *current = files;
 
     t_file *file = list_directory(path, options);
-        if (options.l) {
+    if (options.l) {
         print_total_blocks(file);
     }
     while (current) {
@@ -23,6 +23,8 @@ void recursive_traversal(const char *path, t_options options) {
         if (options.R && S_ISDIR(current->stats.st_mode) &&
             strcmp(current->name, ".") != 0 && strcmp(current->name, "..") != 0) {
 
+            if (!options.l)
+                printf("\n");  
             char new_path[1024];
             snprintf(new_path, sizeof(new_path), "%s/%s", path, current->name);
             printf("\n%s:\n", new_path);
