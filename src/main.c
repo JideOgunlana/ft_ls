@@ -12,6 +12,12 @@ int main(int argc, char **argv) {
         } else {
             t_file *files = list_directory(".", options);
             sort_files(&files, options);
+
+            // Print total blocks if -l option is used
+            if (options.l) {
+                print_total_blocks(files);
+            }
+
             while (files) {
                 print_file_info(files, options);
                 files = files->next;
@@ -27,6 +33,12 @@ int main(int argc, char **argv) {
             } else {
                 t_file *files = list_directory(argv[i], options);
                 sort_files(&files, options);
+
+                // Print total blocks if -l option is used
+                if (options.l) {
+                    print_total_blocks(files);
+                }
+
                 while (files) {
                     print_file_info(files, options);
                     files = files->next;
@@ -39,3 +51,4 @@ int main(int argc, char **argv) {
 
     return 0;
 }
+

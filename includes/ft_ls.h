@@ -36,5 +36,6 @@ void print_file_info(t_file *file, t_options options);
 void sort_files(t_file **file_list, t_options options);
 void recursive_traversal(const char *path, t_options options);
 void free_file_list(t_file *file_list);
+void print_total_blocks(t_file *file_list);
 
 #endif

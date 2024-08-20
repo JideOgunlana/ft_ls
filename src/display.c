@@ -1,6 +1,18 @@
 
 #include "../includes/ft_ls.h"
 
+void print_total_blocks(t_file *file_list) {
+    int total_blocks = 0;
+
+    while (file_list) {
+        total_blocks += file_list->stats.st_blocks;
+        file_list = file_list->next;
+    }
+    total_blocks /= 2;
+
+    printf("total %d\n", total_blocks);
+}
+
 void print_permissions(struct stat stats) {
     printf( (S_ISDIR(stats.st_mode)) ? "d" : "-");
     printf( (stats.st_mode & S_IRUSR) ? "r" : "-");
