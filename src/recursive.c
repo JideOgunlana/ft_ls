@@ -7,6 +7,10 @@ void recursive_traversal(const char *path, t_options options) {
 
     t_file *current = files;
 
+    t_file *file = list_directory(path, options);
+        if (options.l) {
+        print_total_blocks(file);
+    }
     while (current) {
         print_file_info(current, options);
         current = current->next;
