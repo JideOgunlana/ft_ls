@@ -14,6 +14,8 @@
 #include <string.h>
 #include <errno.h>
 #include <ctype.h>
+#include "./libft.h"
+
 
 typedef struct s_file {
     char *name;
