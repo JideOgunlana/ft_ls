@@ -50,6 +50,6 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
     char s1[] = "hello";
     char s2[] = "";
     int ret = ft_memcmp(s1, s2, 2);
-    printf("%d", ret);
+    "%d", ret);
     return 0;
 } */

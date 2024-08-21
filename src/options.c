@@ -1,6 +1,7 @@
 
 #include "../includes/ft_ls.h"
 
+
 void parse_options(int argc, char **argv, t_options *options) {
     int opt;
 
@@ -16,7 +17,7 @@ void parse_options(int argc, char **argv, t_options *options) {
         else if (opt == 't')
             options->t = 1;
         else {
-            fprintf(stderr, "Usage: %s [-lRart] [file ...]\n", argv[0]);
+            display_usage(argv[0]);
             exit(EXIT_FAILURE);
         }
     }

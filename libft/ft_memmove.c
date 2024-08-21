@@ -52,11 +52,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (dst);
 }
-
-/* int main()
-{
-   char csrc[100] = "Geeksfor";
-   ft_memmove(csrc+3, csrc, 3);
-   printf("%s", csrc);
-   return 0;
-} */

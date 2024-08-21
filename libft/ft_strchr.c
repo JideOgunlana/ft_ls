@@ -44,14 +44,3 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return ((char *)(p));
 }
-
-/* int	main()
-{
-	char c[] = "Hello World";
-	char b = '!';
-	char *pc;
-
-	pc = ft_strchr(c, b);
-
-	printf("After scanning for :%c: -> :%s:\n", b, pc);
-} */

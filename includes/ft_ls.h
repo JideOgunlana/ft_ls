@@ -40,5 +40,7 @@ void recursive_traversal(const char *path, t_options options);
 void free_file_list(t_file *file_list);
 void print_total_blocks(t_file *file_list);
 t_file *create_file_node(const char *name, struct stat *stats);
+void build_fullpath(char *dest, const char *path, const char *filename);
+void display_usage(char *prog_name);
 
 #endif

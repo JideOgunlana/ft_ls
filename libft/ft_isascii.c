@@ -26,12 +26,3 @@ int	ft_isascii(int c)
 	}
 	return (0);
 }
-
-// int main()
-// {
-//     char c = 'a';
-//     printf("%c", c);
-//     ft_isascii(c) ? printf("ascii character") : printf("not ascii");  
-//     return (0);
-// }
-

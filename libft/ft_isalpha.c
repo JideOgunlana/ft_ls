@@ -28,24 +28,3 @@ int	ft_isalpha(int c)
 		return (1);
 	return (0);
 }
-
-/* int main()
-{
-    int value;
-    value = ft_isalpha('z');
-    if(value == 1)
-    {
-        printf("I am upperCase");
-    }
-    else if(value == 2)
-    {
-        printf("I am lowercase");
-    }
-    else
-    {
-        printf("I am not an alphabet");
-    }
-
-    // ft_printAlphabet();
-    return (0);
-} */

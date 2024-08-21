@@ -1,6 +1,24 @@
 
 #include "../includes/ft_ls.h"
 
+void build_fullpath(char *dest, const char *path, const char *filename) {
+    // Clear the destination buffer
+    memset(dest, 0, 1024);
+
+    // Copy the base path to the destination
+    size_t path_len = strlen(path);
+    memcpy(dest, path, path_len);
+
+    // Add the separator '/'
+    if (path[path_len - 1] != '/') {
+        dest[path_len] = '/';
+        path_len++;
+    }
+
+    // Append the filename to the destination
+    strcpy(dest + path_len, filename);
+}
+
 t_file *create_file_node(const char *name, struct stat *stats) {
     t_file *new_file = (t_file *)malloc(sizeof(t_file));
     if (!new_file)
@@ -28,8 +46,8 @@ t_file *list_directory(const char *path, t_options options) {
 
         struct stat file_stats;
         char fullpath[1024];
-        snprintf(fullpath, sizeof(fullpath), "%s/%s", path, entry->d_name);
 
+        build_fullpath(fullpath, path, entry->d_name);
         if (lstat(fullpath, &file_stats) == -1) {
             perror("lstat");
             continue;

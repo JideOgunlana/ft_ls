@@ -24,10 +24,13 @@ void recursive_traversal(const char *path, t_options options) {
             strcmp(current->name, ".") != 0 && strcmp(current->name, "..") != 0) {
 
             if (!options.l)
-                printf("\n");  
+                ft_putchar_fd('\n', STDOUT_FILENO); 
             char new_path[1024];
-            snprintf(new_path, sizeof(new_path), "%s/%s", path, current->name);
-            printf("\n%s:\n", new_path);
+            build_fullpath(new_path, path, current->name);
+            ft_putchar_fd('\n', STDOUT_FILENO);
+            ft_putstr_fd(new_path, STDOUT_FILENO);
+            ft_putchar_fd(':', STDOUT_FILENO);
+            ft_putchar_fd('\n', STDOUT_FILENO);
 
             // Recursive call to list subdirectory
             recursive_traversal(new_path, options);

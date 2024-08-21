@@ -39,13 +39,3 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
-
-/* int	main(void)
-{
-	char dst[] = "hello";
-	char src[] = "Picnick";
-	printf(":%s:\n",dst);
-	ft_memcpy(dst, src, 3);
-	printf(":%s:\n",dst);
-}
- */

@@ -9,9 +9,9 @@ int main(int argc, char **argv) {
     if (optind >= argc) {
         // No directory specified, list current directory
         if (options.R) {
-            printf("%s:\n", ".");
+            ft_putstr_fd(".:\n", STDOUT_FILENO);
             recursive_traversal(".", options);
-            if (!options.l) printf("\n");
+            if (!options.l) ft_putchar_fd('\n', STDOUT_FILENO);
 
         } else {
             t_file *files = list_directory(".", options);
@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
                 print_file_info(files, options);
                 files = files->next;
             }
-            if (!options.l) printf("\n");
+            if (!options.l) ft_putchar_fd('\n', STDOUT_FILENO);
             free_file_list(files);
         }
     } else {
@@ -33,9 +33,10 @@ int main(int argc, char **argv) {
                 if (S_ISDIR(path_stat.st_mode)) {
                     // Argument is a directory
                     if (options.R) {
-                        printf("%s:\n", argv[i]);
+                        ft_putstr_fd(argv[i], STDOUT_FILENO);
+                        ft_putstr_fd(":\n", STDOUT_FILENO);
                         recursive_traversal(argv[i], options);
-                        if (!options.l) printf("\n");
+                        if (!options.l) ft_putchar_fd('\n', STDOUT_FILENO);
 
                     } else {
                         t_file *files = list_directory(argv[i], options);
@@ -47,14 +48,14 @@ int main(int argc, char **argv) {
                             print_file_info(files, options);
                             files = files->next;
                         }
-                        if (!options.l) printf("\n");
+                        if (!options.l) ft_putchar_fd('\n', STDOUT_FILENO);
                         free_file_list(files);
                     }
                 } else {
                     // Argument is a file, not a directory
                     t_file *file = create_file_node(argv[i], &path_stat);
                     print_file_info(file, options);
-                    if (!options.l) printf("\n");
+                    if (!options.l) ft_putchar_fd('\n', STDOUT_FILENO);
                     free(file);
                 }
             } else {

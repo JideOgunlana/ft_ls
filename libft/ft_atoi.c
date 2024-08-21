@@ -42,17 +42,3 @@ int	ft_atoi(const char *str)
 	}
 	return (res * sign);
 }
-
-
-
-/* int main ()
-{
-	char a[] = "1234"; // 1234
-	char b[] = "3hello5"; // 3
-	char c[] = "+-2hi mate! 42"; // 0
-	printf("%d\n", ft_atoi(a));
-	printf("%d\n", ft_atoi(b));
-	printf("%d", ft_atoi(c));
-	return 0;
-} */
-

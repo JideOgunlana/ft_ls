@@ -12,13 +12,13 @@ LIBFT = $(LIBFT_DIR)libft.a
 all: $(LIBFT) $(NAME)
 
 $(OBJS_DIR):
-	mkdir -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_DIR)
 
 $(OBJS_DIR)%.o: src/%.c | $(OBJS_DIR)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 $(LIBFT):
-	$(MAKE) -f Makefile_libft
+	@$(MAKE) -f Makefile_libft
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)

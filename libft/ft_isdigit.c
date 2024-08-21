@@ -30,24 +30,3 @@ int	ft_isdigit(int c)
 	}
 	return (0);
 }
-
-// int main()
-// {
-//     printf("%d",ft_isdigit('3'));
-//     return 0;
-// }
-
-// #include <stdio.h>
-// #include <ctype.h>
-
-// int main()
-// {
-//     int c;
-//     c= '5';
-//     printf("Result when numeric character is passed: %d", isdigit(c));
-
-//     c='+';
-//     printf("\nResult when non-numeric character is passed: %d", isdigit(c));
-
-//     return 0;
-// }
