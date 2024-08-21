@@ -29,7 +29,7 @@ void print_permissions(struct stat stats) {
 void print_file_info(t_file *file, t_options options) {
     if (options.l) {
         print_permissions(file->stats);
-        printf(" %ld", file->stats.st_nlink);
+        printf(" %2ld", file->stats.st_nlink);
 
         struct passwd *pw = getpwuid(file->stats.st_uid);
         struct group *gr = getgrgid(file->stats.st_gid);
