@@ -84,6 +84,6 @@ void print_file_info(t_file *file, t_options options) {
         ft_putchar_fd('\n', STDOUT_FILENO);
     } else {
         ft_putstr_fd(file->name, STDOUT_FILENO);
-        ft_putstr_fd("  ", STDOUT_FILENO);  // Use two spaces for separation
+        ft_putstr_fd("  ", STDOUT_FILENO);
     }
 }

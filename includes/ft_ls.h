@@ -29,6 +29,8 @@ typedef struct s_options {
     int a;
     int r;
     int t;
+    int optind;
+    char *optarg;
 } t_options;
 
 // Function prototypes
