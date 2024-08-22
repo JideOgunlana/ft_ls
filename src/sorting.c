@@ -26,11 +26,11 @@ void sort_files(t_file **file_list, t_options options) {
                 // Sort by time if -t is specified
                 cmp = j->stats.st_mtime - i->stats.st_mtime;
                 if (cmp == 0)
-                    cmp = strncmp(i->name, j->name, ft_strlen(i->name));
+                    cmp = ft_strncmp(i->name, j->name, ft_strlen(j->name));
             } else {
                 // Default: Sort alphabetically
                 // cmp = strcmp_lower(i->name, j->name);
-                cmp = strncmp(i->name, j->name, ft_strlen(i->name));
+                cmp = ft_strncmp(i->name, j->name, ft_strlen(j->name));
             }
 
             // Reverse the sorting if -r is specified
