@@ -14,8 +14,8 @@ void build_fullpath(char *dest, const char *path, const char *filename) {
     }
 
     // Append the filename to the destination
-    size_t dest_size = sizeof(dest) + sizeof(path_len);
-    ft_strlcpy(dest + path_len, filename, dest_size);
+    // size_t dest_size = sizeof(dest) + sizeof(path_len);
+    ft_strcpy(dest + path_len, filename);
 }
 
 t_file *create_file_node(const char *name, struct stat *stats) {

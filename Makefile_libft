@@ -38,7 +38,8 @@ MANDATORY_FILES = 	ft_strlen \
 					ft_putnbr_fd \
 					ft_strmapi \
 					ft_striteri \
-					ft_split
+					ft_split \
+					ft_strcpy \
 
 BONUS_FILES =	ft_lstnew \
 				ft_lstadd_front \

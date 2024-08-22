@@ -31,18 +31,3 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-
-/* int main()
-{
-    char a[20]="Program";
-    char b[20]={'P','r','o','g','r','a','m','\0'};
-
-    int len  = ft_strlen(a);
-    int len2 = ft_strlen(b);
-
-    // using the %zu format specifier to print size_t
-    printf("Length of string a = %d \n",len);
-    printf("Length of string b = %d \n",len2);
-
-    return 0;
-} */
