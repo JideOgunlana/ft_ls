@@ -28,7 +28,7 @@ void print_total_blocks(t_file *file_list) {
         total_blocks += file_list->stats.st_blocks;
         file_list = file_list->next;
     }
-    total_blocks /= 2;
+    // total_blocks /= 2;
 
     ft_putstr_fd("total ", STDOUT_FILENO);
     ft_putnbr_fd(total_blocks, STDOUT_FILENO);
