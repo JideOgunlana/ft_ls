@@ -34,14 +34,14 @@ typedef struct s_options {
 } t_options;
 
 // Function prototypes
-void parse_options(int argc, char **argv, t_options *options);
 t_file *list_directory(const char *path, t_options options);
+t_file *create_file_node(const char *name, struct stat *stats);
+void parse_options(int argc, char **argv, t_options *options);
 void print_file_info(t_file *file, t_options options);
 void sort_files(t_file **file_list, t_options options);
 void recursive_traversal(const char *path, t_options options);
 void free_file_list(t_file *file_list);
 void print_total_blocks(t_file *file_list);
-t_file *create_file_node(const char *name, struct stat *stats);
 void build_fullpath(char *dest, const char *path, const char *filename);
 void display_usage(char *prog_name);
 
