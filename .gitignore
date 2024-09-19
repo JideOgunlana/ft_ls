@@ -1,2 +1,5 @@
 .vscode
 ft_ls
+libft/libft.a
+libft/obj
+obj

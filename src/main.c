@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
                     }
                 } else {
                     // Argument is a file, not a directory
-                    t_file *file = create_file_node(argv[i], &path_stat);
+                    t_file *file = create_file_node(argv[i], "", &path_stat);
                     print_file_info(file, options);
                     if (!options.l)
                         ft_putchar_fd('\n', STDOUT_FILENO);

@@ -15,10 +15,12 @@
 #include <errno.h>
 #include <ctype.h>
 #include "./libft.h"
+#include "limits.h"
 
 
 typedef struct s_file {
     char *name;
+    char *dir_path;
     struct stat stats;
     struct s_file *next;
 } t_file;
@@ -35,7 +37,7 @@ typedef struct s_options {
 
 // Function prototypes
 t_file *list_directory(const char *path, t_options options);
-t_file *create_file_node(const char *name, struct stat *stats);
+t_file *create_file_node(const char *name, const char *path, struct stat *stats);
 void parse_options(int argc, char **argv, t_options *options);
 void print_file_info(t_file *file, t_options options);
 void sort_files(t_file **file_list, t_options options);

@@ -36,21 +36,34 @@ void print_total_blocks(t_file *file_list) {
 }
 
 void print_permissions(struct stat stats) {
-    ft_putchar_fd((S_ISDIR(stats.st_mode)) ? 'd' : '-', STDOUT_FILENO);
+    ft_putchar_fd(S_ISLNK(stats.st_mode) ? 'l' : (S_ISDIR(stats.st_mode) ? 'd' : '-'), STDOUT_FILENO);
+
     ft_putchar_fd((stats.st_mode & S_IRUSR) ? 'r' : '-', STDOUT_FILENO);
     ft_putchar_fd((stats.st_mode & S_IWUSR) ? 'w' : '-', STDOUT_FILENO);
-    ft_putchar_fd((stats.st_mode & S_IXUSR) ? 'x' : '-', STDOUT_FILENO);
+    if (stats.st_mode & S_ISUID)
+        ft_putchar_fd((stats.st_mode & S_IXUSR) ? 's' : 'S', STDOUT_FILENO);
+    else
+        ft_putchar_fd((stats.st_mode & S_IXUSR) ? 'x' : '-', STDOUT_FILENO);
+
     ft_putchar_fd((stats.st_mode & S_IRGRP) ? 'r' : '-', STDOUT_FILENO);
     ft_putchar_fd((stats.st_mode & S_IWGRP) ? 'w' : '-', STDOUT_FILENO);
-    ft_putchar_fd((stats.st_mode & S_IXGRP) ? 'x' : '-', STDOUT_FILENO);
+    if (stats.st_mode & S_ISGID)
+        ft_putchar_fd((stats.st_mode & S_IXGRP) ? 's' : 'S', STDOUT_FILENO);
+    else
+        ft_putchar_fd((stats.st_mode & S_IXGRP) ? 'x' : '-', STDOUT_FILENO);
+
     ft_putchar_fd((stats.st_mode & S_IROTH) ? 'r' : '-', STDOUT_FILENO);
     ft_putchar_fd((stats.st_mode & S_IWOTH) ? 'w' : '-', STDOUT_FILENO);
-    ft_putchar_fd((stats.st_mode & S_IXOTH) ? 'x' : '-', STDOUT_FILENO);
+    if (stats.st_mode & S_ISVTX)
+        ft_putchar_fd((stats.st_mode & S_IXOTH) ? 't' : 'T', STDOUT_FILENO);
+    else
+        ft_putchar_fd((stats.st_mode & S_IXOTH) ? 'x' : '-', STDOUT_FILENO);
 }
 
 // print file info with correct alignment
 void print_file_info(t_file *file, t_options options) {
-    if (options.l) {
+    if (options.l)
+    {
         print_permissions(file->stats);
         ft_putchar_fd(' ', STDOUT_FILENO);
 
@@ -81,8 +94,25 @@ void print_file_info(t_file *file, t_options options) {
 
         ft_putchar_fd(' ', STDOUT_FILENO);
         ft_putstr_fd(file->name, STDOUT_FILENO);
+                
+        if (S_ISLNK(file->stats.st_mode)) {
+            char link_target[PATH_MAX];
+            char *full_path = ft_strjoin(file->dir_path, file->name);
+            ssize_t len = readlink(full_path, link_target, sizeof(link_target) - 1);
+            free(full_path);
+            if (len == -1)
+                perror("readlink error");
+            else
+            {
+                link_target[len] = '\0';
+                ft_putstr_fd(" -> ", STDOUT_FILENO);
+                ft_putstr_fd(link_target, STDOUT_FILENO);
+            }
+        }
         ft_putchar_fd('\n', STDOUT_FILENO);
-    } else {
+    }
+    else
+    {
         ft_putstr_fd(file->name, STDOUT_FILENO);
         ft_putstr_fd("  ", STDOUT_FILENO);
     }
